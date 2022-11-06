@@ -21,13 +21,17 @@ const tweets = [{
 }];
 
 app.post("/sign-up", (req,res) => {
+    let q = users.some(u => u.username === req.body.username);
+    if(q){
+        res.status(401).send({ message: "Usuario já existe! Escolha outro nome de usuário!" });
+    }
     
-    if(!req.body.username || !req.body.avatar){
+    else if(!req.body.username || !req.body.avatar){
         res.status(401).send({ message: "Prencha corretamente os campos!" });
     }
     else{
     users.push(req.body);
-    res.send("ok")    
+    res.status(201).send({ message: "ok!" })   
 }
 })
 
@@ -37,10 +41,10 @@ app.post("/tweets", (req,res) => {
     }
     else{
     tweets.push(req.body);
-    res.send("ok")    
+    res.status(201).send({ message: "ok!" })  
 }
     
-res.send("ok")
+
 })
 
 app.get("/tweets", (req,res) => {
