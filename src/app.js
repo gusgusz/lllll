@@ -6,19 +6,10 @@ app.use(cors());
 app.use(express.json());
 
 const users = [{
-    username: "bobesponja",
+    username: "Gatíneo",
 		avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info"
 }];
-const tweets = [{
-    username: "bobesponja",
-		tweet: "oiiiiiii"
-}, {
-    username: "bobesponja",
-		tweet: "oiiiiiii"
-}, {
-    username: "bobesponja",
-		tweet: "oiiiiiii"
-}];
+const tweets = [];
 
 app.post("/sign-up", (req,res) => {
     let q = users.some(u => u.username === req.body.username);
